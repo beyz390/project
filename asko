@@ -1,0 +1,82 @@
+import java.util.Arrays;
+
+public class Decks {
+public static void main (String[]args){
+
+    String[] blueCards= new String[10];
+    blueCards[0]="1";
+    blueCards[1]="2";
+    blueCards[2]="3";
+    blueCards[3]="4";
+    blueCards[4]="5";
+    blueCards[5]="6";
+    blueCards[6]="7";
+    blueCards[7]="8";
+    blueCards[8]="9";
+    blueCards[9]="10";
+
+    String[] pinkCards= new String[10];
+    pinkCards[0]="1";
+    pinkCards[1]="2";
+    pinkCards[2]="3";
+    pinkCards[3]="4";
+    pinkCards[4]="5";
+    pinkCards[5]="6";
+    pinkCards[6]="7";
+    pinkCards[7]="8";
+    pinkCards[8]="9";
+    pinkCards[9]="10";
+
+    String[] greenCards= new String[10];
+    greenCards[0]="1";
+    greenCards[1]="2";
+    greenCards[2]="3";
+    greenCards[3]="4";
+    greenCards[4]="5";
+    greenCards[5]="6";
+    greenCards[6]="7";
+    greenCards[7]="8";
+    greenCards[8]="9";
+    greenCards[9]="10";
+
+    String[] redCards = new String[10];
+    redCards[0]="1";
+    redCards[1]="2";
+    redCards[2]="3";
+    redCards[3]="4";
+    redCards[4]="5";
+    redCards[5]="6";
+    redCards[6]="7";
+    redCards[7]="8";
+    redCards[8]="9";
+    redCards[9]="10";
+
+    String[] colorfulCards = new String [40];
+    for(int i=0;i<10;i++){
+colorfulCards[i]=pinkCards[i];
+    }
+for(int i=0; i<10;i++){
+    colorfulCards[i+9]=blueCards[i];
+}
+for (int i=0; i<10;i++){
+    colorfulCards[i+18]=greenCards[i];
+}
+for(int i=0; i<10; i++){
+    colorfulCards[i+27]=redCards[i];
+
+}
+
+for(int a=0;a<colorfulCards.length;a++;) {
+    System.out.print(colorfulCards[a]);
+}
+
+
+
+
+
+
+
+
+
+}
+
