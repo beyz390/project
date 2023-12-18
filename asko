@@ -12,7 +12,52 @@ public class Deck {
         createDeck();
         shuffleDeck();
     }
+ private void createDeck() {
+        int size = 0;
+        for (int i = 1; i <= 10; i++) {
+            deck[size++] = new Card("Green", i);
+            deck[size++] = new Card("Blue", i);
+            deck[size++] = new Card("Red", i);
+            deck[size++] = new Card("Yellow", i);
+        }
+    }
 
+    private void shuffleDeck() {
+        Random random = new Random();
+        for (int i = Colorfulcards - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            Card temp = deck[index];
+            deck[index] = deck[i];
+            deck[i] = temp;
+        }
+    }
+
+    public Card drawCard() {
+        if (currentIndex >= Colorfulcards) {
+            System.out.println("Deck is empty. No cards to draw.");
+            return null;
+        } else {
+            return deck[currentIndex++];
+        }
+    }
+
+    public boolean isEmpty() {
+        return currentIndex >= Colorfulcards;
+    }
+}
+
+class Card {
+
+    public String color;
+    public int value;
+
+    public Card(String color, int value) {
+        this.color = color;
+        this.value = value;
+    }
+
+    // getters and setters for color and value
+}
 
 
 
