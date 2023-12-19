@@ -56,7 +56,7 @@ class Card {
         this.value = value;
     }
 
-    // getters and setters for color and value
+    
 }
 
 
