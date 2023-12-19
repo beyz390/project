@@ -33,7 +33,7 @@ public class Deck {
     }
 
     public Card drawCard() {
-        if (currentIndex >= Colorfulcards) {
+        if (currentIndex < Colorfulcards) {
             System.out.println("Deck is empty. No cards to draw.");
             return null;
         } else {
