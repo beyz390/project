@@ -1,0 +1,11 @@
+public class Main {
+    public static void main(String[] args) {
+        Deck deck = new Deck();
+
+        // Print all the cards in the deck
+        for (int i = 0; i < deck.deck.length; i++) {
+            Card card = deck.deck[i];
+            System.out.println("Card " + (i + 1) + ": Color: " + card.getColor() + ", Value: " + card.getValue());
+        }
+    }
+}
