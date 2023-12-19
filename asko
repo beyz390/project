@@ -32,14 +32,17 @@ public class Deck {
         }
     }
 
-    public Card drawCard() { //draws a card from the deck when it is empty it prints null
-        if (currentIndex < Colorfulcards) {
-            System.out.println("Deck is empty. No cards to draw.");
-            return null;
-        } else {
-            return deck[currentIndex++];
-        }
+public Card drawCard() {
+    if (currentIndex >= Colorfulcards) {
+        System.out.println("Deck is empty. No cards to draw.");
+        return null;
     }
+
+    Card drawnCard = deck[currentIndex];
+    currentIndex++;
+    return drawnCard;
+}
+
 
     public boolean isEmpty() { //checks if the deck is empty or not by currentIndex
         return currentIndex >= Colorfulcards;
