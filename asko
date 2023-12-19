@@ -7,8 +7,8 @@ public class Deck {
     public int currentIndex;
 
     public Deck() {
-        this.deck = new Card[Colorfulcards];
-        this.currentIndex = 0;
+        deck = new Card[Colorfulcards];
+        currentIndex = 0;
         createDeck();
         shuffleDeck();
     }
