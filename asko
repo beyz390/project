@@ -1,18 +1,18 @@
-import java.util.Random;
+import java.util.Random;//for shuffling
 
 public class Deck {
 
-    public static int Colorfulcards = 40;
-    public Card[] deck;
+    public static int Colorfulcards = 40;//constant of 40 cards
+    public Card[] deck;// deck array
     public int currentIndex;
 
-    public Deck() {
-        deck = new Card[Colorfulcards];
-        currentIndex = 0;
-        createDeck();
-        shuffleDeck();
+    public Deck() { // creates the deck object
+        deck = new Card[Colorfulcards]; //creates array deck and fills it with instances of card class.Size of this array is determined by Colorfulcards.
+        currentIndex = 0;//firstly it is 0 later to be incremented in drawCard method
+        createDeck();//calls the createDeck method
+        shuffleDeck();//calls the shuffleDeck method
     }
- private void createDeck() {
+ private void createDeck() { //adding colorful to the deck array , adding cards with values for each color
         int size = 0;
         for (int i = 1; i <= 10; i++) {
             deck[size++] = new Card("Green", i);
@@ -22,7 +22,7 @@ public class Deck {
         }
     }
 
-    private void shuffleDeck() {
+    private void shuffleDeck() { //fisher-yates shuffle algorithm
         Random random = new Random();
         for (int i = Colorfulcards - 1; i > 0; i--) {
             int index = random.nextInt(i + 1);
@@ -32,7 +32,7 @@ public class Deck {
         }
     }
 
-    public Card drawCard() {
+    public Card drawCard() { //draws a card from the deck when it is empty it prints null
         if (currentIndex < Colorfulcards) {
             System.out.println("Deck is empty. No cards to draw.");
             return null;
@@ -41,23 +41,36 @@ public class Deck {
         }
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty() { //checks if the deck is empty or not by currentIndex
         return currentIndex >= Colorfulcards;
     }
 }
 
 class Card {
 
-    public String color;
-    public int value;
+    public String color;// a string called color
+    public int value;// an integer called value
 
-    public Card(String color, int value) {
+    public Card(String color, int value) { //creates the card object and takes two parameters for it
         this.color = color;
-        this.value = value;
+        this.value = value; //these help with referring
+    }
+  public String getColor() { // this method returns the color
+    return color ;
     }
 
+    public int getValue() { // this method returns the value
+        return value;
+    }
+    @Override
+    public String toString() {
+        return "Card:" + "color:" + color +   ", value=" + value +  '}';
+
+
+
+    }
     
-}
+
 
 
 
