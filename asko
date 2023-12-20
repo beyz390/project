@@ -101,15 +101,17 @@ Deck a = new Deck(); //first deck indicates that i am creating an object from th
         // Print all the cards in the medeck
         for (int i = 0; i < b.medeck.length; i++) {
             Card cardd = b.medeck[i];
+if (cardd != null){
             System.out.println("meCard: " + (i + 1) + "color: " + cardd.ccolor() + " value: " + cardd.vvalue());
-        }
+       }  }
 
         // Print all the cards in the scarydeck
         for (int i = 0; i < c.scarydeck.length; i++) {
             Card card = c.scarydeck[i];
+if (cardd != null){
             System.out.println("scaryCard: " + (i + 1) + "color: " + card.ccolor() + " value: " + card.vvalue());
         }
-
+ }
 
     }
 }
