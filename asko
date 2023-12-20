@@ -88,7 +88,7 @@ class Card {
 public class Main {
     public static void main(String[] args) {
 Deck a = new Deck(); //first deck indicates that i am creating an object from the deck class, a is the name, 
-// so by this code you can access the deck class because i created an instanceof the deck class.
+// so by this code you can access the deck class because i created an instance of the deck class.
 
         // Print all the cards in the deck
         for (int i = 0; i < a.gamedeck.length; i++) {
