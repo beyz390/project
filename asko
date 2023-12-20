@@ -5,13 +5,16 @@ public class Deck {
     public static int Colorfulcards = 40;//constant of 40 cards
     public Card[] deck;// deck array
     public int currentIndex;
+public Card[] medeck;
+    public Card[] scarydeck;
 
     public Deck() { // creates the deck object
         deck = new Card[Colorfulcards]; //creates array deck and fills it with instances of card class.Size of this array is determined by Colorfulcards.
         currentIndex = 0;//firstly it is 0 later to be incremented in drawCard method
         createDeck();//calls the createDeck method
         shuffleDeck();//calls the shuffleDeck method
-    }
+        ptt();
+}
  private void createDeck() { //adding colorful to the deck array , adding cards with values for each color
         int size = 0;
         for (int i = 1; i <= 10; i++) {
@@ -31,7 +34,15 @@ public class Deck {
             deck[i] = temp;
         }
     }
+  public void ptt(){
+        shuffleDeck();
+        for(int i =0;i<5;i++){
+            scarydeck[i]= gamedeck[i];
+            medeck[i] =gamedeck [Colorfulcards - 1 - i];
+        }
+        currentIndex += 10;
 
+    }
 public Card drawCard() {
     if (currentIndex >= Colorfulcards) {
         System.out.println("Deck is empty. No cards to draw.");
@@ -73,17 +84,6 @@ class Card {
 
     }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 public class Main {
     public static void main(String[] args) {
