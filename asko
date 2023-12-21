@@ -18,10 +18,10 @@ public Card[] medeck;
  private void createDeck() { //adding colorful to the deck array , adding cards with values for each color
         int size = 0;
         for (int i = 1; i <= 10; i++) {
-            deck[size++] = new Card("Green", i);
-            deck[size++] = new Card("Blue", i);
-            deck[size++] = new Card("Red", i);
-            deck[size++] = new Card("Yellow", i);
+            deck[size++] = new Card("Green", i,"");
+            deck[size++] = new Card("Blue", i,"");
+            deck[size++] = new Card("Red", i,"");
+            deck[size++] = new Card("Yellow", i,"");
         }
     }
 
@@ -150,10 +150,10 @@ class Card {
     public String color;// a string called color
     public int value;// an integer called value
 public String sign;   
-public Card(String color, int value) { //creates the card object and takes two parameters for it
+public Card(String color, int value,String sign) { //creates the card object and takes two parameters for it
         this.color = color;
         this.value = value; //these help with referring
-    this.sign = "";
+    this.sign = sign;
 }
   public String getColor() { // this method returns the color
     return color ;
