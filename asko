@@ -149,11 +149,12 @@ class Card {
 
     public String color;// a string called color
     public int value;// an integer called value
-
-    public Card(String color, int value) { //creates the card object and takes two parameters for it
+public String sign;   
+public Card(String color, int value) { //creates the card object and takes two parameters for it
         this.color = color;
         this.value = value; //these help with referring
-    }
+    this.sign = "";
+}
   public String getColor() { // this method returns the color
     return color ;
     }
