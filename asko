@@ -59,92 +59,7 @@ public Card drawCard() {
         return currentIndex >= Colorfulcards;
     }
 }
- public void playGame() {
-
-        // Repeat the following 5 times
-        for (int turn = 0; turn < 5; turn++) {
-            // The card at the top is given to the computer
-            Card computerCard = drawCard();
-            System.out.println("Computer draws: " + computerCard);
-
-            // The card at the bottom is given to the user
-            Card userCard = medeck[medeck.length - 1];
-            System.out.println("User draws: " + userCard);
-
-            // Additional logic for generating random cards
-            generateRandomCards();
-
-            // Display player decks after drawing cards
-            displayPlayerDecks();
-
-            // Logic for player's turn
-            playerTurn();
-        }
-    }
-    private void generateRandomCards() {
-        // Generate three cards with random colors and values between 1 to 6, with a random sign
-        for (int i = 0; i < 3; i++) {
-            int randomValue = new Random().nextInt(6) + 1;
-            String randomColor = getRandomColor();
-            String randomSign = getRandomSign();
-            Card randomCard = new Card(randomColor, randomValue, randomSign);
-            medeck[i] = randomCard;
-        }
-
-        // Generate two cards with 80% chance of being signed cards
-        for (int i = 3; i < 5; i++) {
-            if (new Random().nextDouble() <= 0.8) {
-                String randomSign = getRandomSign();
-                Card signedCard = new Card(null, 0, randomSign);
-                medeck[i] = signedCard;
-            }
-        }
-
-        // Shuffle the player decks after adding new cards
-        shufflePlayerDecks();
-    }
-
-    private String getRandomColor() {
-        String[] colors = {"Yellow", "Blue", "Red", "Green"};
-        return colors[new Random().nextInt(colors.length)];
-    }
-
-    private String getRandomSign() {
-        String[] signs = {"+", "-"};
-        return signs[new Random().nextInt(signs.length)];
-    }
-
-    private void shufflePlayerDecks() {
-        Random random = new Random();
-        for (int i = medeck.length - 1; i > 0; i--) {
-            int index = random.nextInt(i + 1);
-            Card temp = medeck[index];
-            medeck[index] = medeck[i];
-            medeck[i] = temp;
-        }
-    }
-
-    private void displayPlayerDecks() {
-        // Display the cards in the medeck
-        System.out.println("Player Deck:");
-        for (int i = 0; i < medeck.length; i++) {
-            Card card = medeck[i];
-            if (card != null) {
-                System.out.println("Card " + (i + 1) + ": " + card);
-            }
-        }
-    }
-
-    private void playerTurn() {
-        // Implement the game logic for the player's turn here
-        // You can use user input to allow the player to draw, stand, or play a card
-        // Update the player's board and handle the game outcomes as described
-        // Remember to check for bust conditions, board full conditions, and game winner
-    }
-
-    // ... (rest of the existing code)
-}
-} }
+ 
 class Card {
 
     public String color;// a string called color
@@ -155,11 +70,11 @@ public Card(String color, int value,String sign) { //creates the card object and
         this.value = value; //these help with referring
     this.sign = sign;
 }
-  public String getColor() { // this method returns the color
+  public String ccolor() { // this method returns the color
     return color ;
     }
 
-    public int getValue() { // this method returns the value
+    public int vvalue() { // this method returns the value
         return value;
     }
     @Override
