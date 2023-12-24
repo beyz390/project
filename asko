@@ -9,6 +9,8 @@ public Card[] medeck;
     public Card[] scarydeck;
  public Card[] scaryhand;
     public Card[] mehand;
+ public Card[] meboard;
+ public Card[] scaryboard;
 
     public Deck() { // creates the deck object
         deck = new Card[Colorfulcards]; //creates array deck and fills it with instances of card class.Size of this array is determined by Colorfulcards.
@@ -16,6 +18,8 @@ public Card[] medeck;
         createDeck();//calls the createDeck method
         shuffleasko();//calls the shuffleDeck method
         ptt();
+meboard = new Card[6];
+        scaryboard = new Card[6];
 }
  private void deckermakerasko() { //adding colorful to the deck array , adding cards with values for each color
         int size = 0;
@@ -133,7 +137,19 @@ public void pttthreecards(Card[] deck){
 
             currentIndex += 8; // Reduce the count by 8 since we're dealing 8 cards
         }
+public void fillboard(Card[] board) {
+        for (int i = 0; i < board.length; i++) {
+            board[i] = cardselecting();
+            board[i].setSign(signsallamaca());
+        }
+    }
+    public void meboardfilling() {
+        fillboard(meboard);
+    }
 
+    public void scaryboardfilling() {
+        fillboard(scaryboard);
+    }
 
     } 
 class Card {
@@ -233,6 +249,7 @@ System.out.println(card);
 
 
     }
+
 }
 
 
