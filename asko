@@ -220,10 +220,16 @@ if (carddd != null){
 
         // Print me hand
         System.out.println("Me Hand:");
-        for (Card card : u.mehand) {
-            System.out.println(card);
+        for (int i = 0; i < u.mehand.length; i++) {
+           Card card = u.mehand[i];
+System.out.println(card);
         }
-
+System.out.println("Scary Hand:");
+for (int i = 0; i < u.scaryhand.length; i++){
+        Card card = u.scaryhand[i];
+System.out.println(card);
+        
+    }
 
 
     }
