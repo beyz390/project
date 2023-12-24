@@ -2,20 +2,22 @@ import java.util.Random;//for shuffling
 
 public class Deck {
 
-    public static int Colorfulcards = 40;//constant of 40 cards
+    public static int rainbow = 40;//constant of 40 cards
     public Card[] deck;// deck array
     public int currentIndex;
 public Card[] medeck;
     public Card[] scarydeck;
+ public Card[] scaryhand;
+    public Card[] mehand;
 
     public Deck() { // creates the deck object
         deck = new Card[Colorfulcards]; //creates array deck and fills it with instances of card class.Size of this array is determined by Colorfulcards.
         currentIndex = 0;//firstly it is 0 later to be incremented in drawCard method
         createDeck();//calls the createDeck method
-        shuffleDeck();//calls the shuffleDeck method
+        shuffleasko();//calls the shuffleDeck method
         ptt();
 }
- private void createDeck() { //adding colorful to the deck array , adding cards with values for each color
+ private void deckermakerasko() { //adding colorful to the deck array , adding cards with values for each color
         int size = 0;
         for (int i = 1; i <= 10; i++) {
             deck[size++] = new Card("Green", i,"");
@@ -25,7 +27,7 @@ public Card[] medeck;
         }
     }
 
-    private void shuffleDeck() { //fisher-yates shuffle algorithm
+    private void shuffleasko() { //fisher-yates shuffle algorithm
         Random random = new Random();
         for (int i = Colorfulcards - 1; i > 0; i--) {
             int index = random.nextInt(i + 1);
@@ -38,20 +40,66 @@ public Card[] medeck;
         shuffleDeck();
         for(int i =0;i<5;i++){
             scarydeck[i]= gamedeck[i];
-            medeck[i] =gamedeck [Colorfulcards - 1 - i];
+            
+        for (int i = 0; i < 5; i++) {
+            medeck[i] = gamedeck[rainbow - 5 + i]; // Distribute the bottom card to medeck
         }
-        currentIndex += 10;
+ currentIndex += 10;
+        
+        
+pttthreecards(scarydeck);
+pttthreecards(medeck);
 
     }
-public Card drawCard() {
+public String signsallamaca() {
+        String[] signs = {"+", "-"};
+        return signs[new Random().nextInt(signs.length)];
+
+
+    }
+      public Card sonikikartyapmaca() {
+        Random random = new Random();
+
+        
+        int randomInt = random.nextInt(100);
+    
+        double chance = randomInt / 100.0;
+        String[] signs = {"+", "-"};
+        if (chance < 0.2) {
+            return flipyapmaca(); // 20% chance for a flip card
+        } else if (chance < 0.4) {
+            return doubleyapmaca(); // 20% chance for a double card
+        } else {
+            // 80% chance for a signed card with a random color and value
+            String color = gamedeck[currentIndex].ccolor(); // Use the color of the current card
+            int value = gamedeck[currentIndex].vvalue(); //
+             
+            Card signedCard = new Card(color, value, ""); // Signed card
+            
+            return signedCard;
+
+
+        }
+    }
+     
+      public Card flipyapmaca() {
+        return new Card("", 0, "flip"); // Set the sign to "flip"
+    }   
+
+ public Card doubleyapmaca() {
+        
+        return new Card("", 0, "double"); // Set the sign to "double"
+    }
+ 
+public Card cardselecting() {
     if (currentIndex >= Colorfulcards) {
-        System.out.println("Deck is empty. No cards to draw.");
+        System.out.println("Deck is empty. No cards.");
         return null;
     }
 
-    Card drawnCard = deck[currentIndex];
+    Card thechosenone = deck[currentIndex];
     currentIndex++;
-    return drawnCard;
+    return thechosenone;
 }
 
 
@@ -59,7 +107,35 @@ public Card drawCard() {
         return currentIndex >= Colorfulcards;
     }
 }
- 
+public void pttthreecards(Card[] deck){
+        for (int i = 5; i < 8; i++) {
+            deck[i] = cardselecting();
+            deck[i].setSign(signsallamaca());
+        }
+
+        deck[8] = sonikikartyapmaca();
+        deck[9] = sonikikartyapmaca();
+    }
+    public void dealHands() {
+
+            // Shuffle the deck
+            shuffleasko();
+
+            // Distribute cards to scary hand from scarydeck
+            for (int i = 0; i < 4; i++) {
+                scaryhand[i] = scarydeck[i];
+            }
+
+            // Distribute cards to me hand from medeck
+            for (int i = 0; i < 4; i++) {
+                mehand[i] = medeck[i];
+            }
+
+            currentIndex += 8; // Reduce the count by 8 since we're dealing 8 cards
+        }
+
+
+    } 
 class Card {
 
     public String color;// a string called color
@@ -80,11 +156,20 @@ public Card(String color, int value,String sign) { //creates the card object and
     @Override
     public String toString() {
         return "Card:" + "color:" + color +   ", value=" + value +  '}';
+ public String getSign() {
 
+        return sign;
+    }
+        // Setter for sign
+        public void setSign(String sign) {
+            this.sign = sign;
+        }
 
 
     }
-    }
+
+
+
 
 public class Main {
     public static void main(String[] args) {
@@ -96,23 +181,50 @@ Deck a = new Deck(); //first deck indicates that i am creating an object from th
             Card card = a.gamedeck[i];
             System.out.println("Card " + (i + 1) + ": Color: " + card.ccolor() + ", Value: " + card.vvalue());
         }
- Deck b = new Deck();
-        Deck c = new Deck();
+ 
 
         // Print all the cards in the medeck
-        for (int i = 0; i < b.medeck.length; i++) {
-            Card cardd = b.medeck[i];
+        for (int i = 0; i < a.medeck.length; i++) {
+            Card cardd = a.medeck[i];
 if (cardd != null){
-            System.out.println("meCard: " + (i + 1) + "color: " + cardd.ccolor() + " value: " + cardd.vvalue());
+            System.out.print("meCard " + (i + 1) + ": Color: " + cardd.ccolor() +
+                        ", Value: " + cardd.vvalue() + ", Sign: " + cardd.getSign());
+if ("flip".equals(cardd.getSign())) {
+                    System.out.println(" (Flip Card)");
+                } else if ("double".equals(cardd.getSign())) {
+                    System.out.println(" (Double Card)");
+                }
+
+
+                System.out.println();
        }  }
 
         // Print all the cards in the scarydeck
-        for (int i = 0; i < c.scarydeck.length; i++) {
-            Card carddd = c.scarydeck[i];
+        for (int i = 0; i < a.scarydeck.length; i++) {
+            Card carddd = a.scarydeck[i];
 if (carddd != null){
-            System.out.println("scaryCard: " + (i + 1) + "color: " + carddd.ccolor() + " value: " + carddd.vvalue());
+            System.out.print("scaryCard " + (i + 1) + ": Color: " + carddd.ccolor() +
+                        ", Value: " + carddd.vvalue() + ", Sign: " + carddd.getSign());
+      if ("flip".equals(carddd.getSign())) {
+                    System.out.println(" (Flip Card)");
+                } else if ("double".equals(carddd.getSign())) {
+                    System.out.println(" (Double Card)");
+                }
+                System.out.println();
         }
  }
+  Deck u = new Deck();
+        u.dealHands();
+
+
+
+        // Print me hand
+        System.out.println("Me Hand:");
+        for (Card card : u.mehand) {
+            System.out.println(card);
+        }
+
+
 
     }
 }
